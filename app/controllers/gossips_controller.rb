@@ -21,7 +21,7 @@ class GossipsController < ApplicationController
   # POST /gossips
   def create 
     @gossip = Gossip.new(gossip_params)
-    @gossip.user = User.find_by(id: session[:user_id])
+    @gossip.user = current_user
     if @gossip.save
       flash[:success] = "Create Gossip Success!"
       redirect_to gossips_path

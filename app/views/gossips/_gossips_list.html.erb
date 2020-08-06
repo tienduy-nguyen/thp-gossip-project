@@ -2,7 +2,7 @@
 
       <% @gossips.each do |gossip|%>
         <div class="col-md-6 mb-4">
-          <div class="card px-2 py-4" style="height: 230px;">
+          <div class="card px-2 py-4 card-gossip">
             <div class="card-heading d-flex">
               <div class="pull-left d-flex author">
                 <div class="pull-left mr-2">
@@ -10,14 +10,15 @@
                     alt="user profile image" style="height:40px;width:40px">
                 </div>
                 <div class=" pt-1" style="positon: relative">
-                  <%= link_to gossip.user.first_name, user_path(:id => gossip.user.id), :class =>'h5'%>
-                  
+                  <a href="<%= user_path(gossip.user.id)%>" class="h5"><%= gossip.user.full_name || gossip.user.first_name %></a>
+                 
                   <br><small class="text-muted"
                     style="margin-top:-1px;position:absolute"><sup><%= gossip.created_at %></sup></small>
                 </div>
               </div>
 
                <!-- Edit - Delete -->
+               <% if is_current_user?(gossip.user) %>
                <div class="ml-auto d-flex">
                     <div>
                       <%= link_to edit_gossip_path(:id => gossip.id) do %>
@@ -32,13 +33,24 @@
                     data-method="DELETE"><i class="fas fa-trash fa-lg text-danger"></i></a>
                     </div>
               </div>
+              <% end %>
 
             </div>
 
             <div class="card-body ">
-            <span>Gossip n° <%= gossip.id.to_s%>: <%= link_to  gossip.title, gossip_path(:id => gossip.id) %><br>
-            </span>
-               <span class="text-muted"><%= truncate(gossip.content, :length => 200) %></span>
+              <div class="card-infomation">
+                <span>Gossip n° <%= gossip.id.to_s%>: <%= link_to  gossip.title, gossip_path(:id => gossip.id) %><br>
+                </span>
+                <span class="text-muted"><%= truncate(gossip.content, :length => 200) %></span>
+              </div>
+              <% @tags = get_tags_by_gossipid(gossip.id) %>
+              <div class="card-bar">
+                <% @tags.each do |tag|%>
+                <a class="card-tag" href="<%= tag.title %>">
+                  <%= tag.title %>
+                </a>
+                <% end %>
+              </div>
             </div>
 
           </div>
