@@ -1,4 +1,6 @@
 class GossipsController < ApplicationController
+  include SessionsHelper
+
   before_action :gossip_filter, only: [:show, :edit, :update, :destroy]
   # GET /gossips
   def index
@@ -13,12 +15,12 @@ class GossipsController < ApplicationController
   # GET /gossips/new
   def new
     @gossip = Gossip.new
-    @user_id  = User.all.sample.id
   end
 
   # POST /gossips
   def create 
     @gossip = Gossip.new(gossip_params)
+    @gossip.user = User.find_by(id: session[:user_id])
     if @gossip.save
       flash[:success] = "Create Gossip Success!"
       redirect_to gossips_path
@@ -34,7 +36,6 @@ class GossipsController < ApplicationController
   # GET /gossips/:id/edit
   def edit
     @gossip = Gossip.find(params[:id])
-    @user_id = User.all.sample.id
   end
 
   # PUT /gossips/:id/edit
@@ -60,7 +61,7 @@ class GossipsController < ApplicationController
 
   private
     def gossip_params
-      params.require(:gossip).permit(:title, :content, :user_id)
+      params.require(:gossip).permit(:title, :content)
     end
     def gossip_filter
       @gossip = Gossip.find_by(:id => params[:id]) or not_found
