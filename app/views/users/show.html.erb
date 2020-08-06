@@ -16,11 +16,11 @@
       <div class="col-md-12 col-lg-10">
         <div class="card border-success mb-3">
           <div class="card-header h5 text-primary"><%= @user.full_name || @user.first_name %></div>
-          <div class="card-body text-success">
-            <h6 class="card-title">Age: <%= @user.age %></h6>
-            <h6 class="card-title">Email: <%= @user.email %></h6>
-            <h6 class="card-title">City: <%= @user.city.name unless @user.city.nil? %></h6>
-            <p class="card-text "><%= @user.description %></p>
+          <div class="card-body">
+            <div>Age: <h6 class="card-title d-inline text-success"><%= @user.age %></h6></div>
+             <div>Email: <h6 class="card-title d-inline text-success"><%= @user.email %></h6></div>
+             <div>City: <h6 class="card-title d-line text-success"><%= @user.city.name unless @user.city.nil? %></h6></div>
+             <div>Description: <p class="card-text text-success"><%= @user.description %></p></div>
           </div>
         </div>
       </div>
@@ -30,7 +30,7 @@
       <% if is_current_user?(@user) %>
         <div class="col-lg-2 col-md-12">
         <div class="row">
-          <div class="d-flex flex-column">
+          <div class="d-flex flex-column ml-3">
             <a class="btn btn-success" href="<%= edit_user_path(@user.id)%>"><i class="fas fa-user"></i> Edit Profile
               Info</a>
             <a class="btn btn-danger mt-2" href="<%= edit_user_path(@user.id)%>"><i class="fas fa-cog"></i> Edit
@@ -54,9 +54,11 @@
         <div class="card p-2 border-success">
           <div class="card-body d-flex m-0 p-0">
 
+            <!-- Action Edit Delete -->
             <div class="col-md-1 pt-2">
               <div class="ml-auto d-flex">
-                <div>
+            <% if is_current_user?(@user) %>
+                <div class="">
                   <%= link_to edit_gossip_path(:id => gossip.id) do %>
                   <i class="fas fa-edit mr-2 fa-lg text-info"></i>
                   <% end %>
@@ -66,8 +68,15 @@
                   <a href="<%= gossip_path(gossip.id) %>" class="btn p-0" data-confirm="Are you sure want to delete it?"
                     data-method="DELETE"><i class="fas fa-trash fa-lg text-danger"></i></a>
                 </div>
+            <% else %>
+                  <div>
+                  Id: <strong><%= gossip.id %></strong>
+                </div>
+            <% end %>
               </div>
             </div>
+
+            <!-- End action Edit Delete -->
 
             <div class="col-md-11">
               <div class="card-text">

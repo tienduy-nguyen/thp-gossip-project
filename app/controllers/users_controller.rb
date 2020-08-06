@@ -47,15 +47,28 @@ class UsersController < ApplicationController
   # GET /users/:id/edit
   def edit
     @user = User.find(params[:id])
-    @city_id = City.all.sample.id
+    if @user.id != current_user.id
+      flash[:error] = "Permission denided!"
+      return redirect_to users_path
+    end
+    @cities = City.all
   end
 
   # PUT /users/:id/edit
   def update_profile
-    @user = User.find(params[:id])
-    if @user.update(user_params)
+    @user = current_user
+    puts "-------------------------"
+    puts user_params[:city_id]
+    puts "-------------------------"
+    @user.city_id = user_params[:city_id]
+    @user.username = user_params[:username]
+    @user.first_name = user_params[:first_name]
+    @user.last_name = user_params[:last_name]
+    @user.age = user_params[:age]
+    @user.description = user_params[:description]
+    if @user.save
       flash[:success] = "Update user profile succesfully!"
-      redirect_to users_path
+      redirect_back_or @user
     else
       @user.errors.full_messages.each do |message|
         flash[:error] = message
@@ -88,7 +101,7 @@ class UsersController < ApplicationController
       :last_name, 
       :age, 
       :description, 
-      :city,
+      :city_id,
       :email,
       :password,
       :password_confirmation

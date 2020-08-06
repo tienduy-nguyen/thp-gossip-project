@@ -38,6 +38,11 @@ class GossipsController < ApplicationController
   # GET /gossips/:id/edit
   def edit
     @gossip = Gossip.find(params[:id])
+    # Check user
+    if @gossip.user.id != current_user.id
+      flash[:error] = "Permission denied!"
+      redirect_back_or @gossip
+    end
   end
 
   # PUT /gossips/:id/edit
@@ -48,17 +53,24 @@ class GossipsController < ApplicationController
       redirect_to gossips_path
     else
       @gossip.errors.full_messages.each do |message|
-        flash[:error] = message
+      flash[:error] = message
       end
       render :edit
     end
+
+   
   end
 
   # DELETE /uses/:id
   def destroy
     @gossip = Gossip.find(params[:id])
-    @gossip.destroy
-    redirect_to gossips_path
+    if @gossip.user.id != current_user.id
+      flash[:error] = "Permission denied!"
+      redirect_to gossips_path
+    else
+      @gossip.destroy
+      redirect_to gossips_path
+    end
   end
 
   private

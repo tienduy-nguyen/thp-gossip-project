@@ -12,8 +12,9 @@ Rails.application.routes.draw do
   delete '/logout', to: 'sessions#destroy'
   get '/signup', to: 'users#new'
   post '/signup', to: 'users#create'
-  get '/user/:id/setting', to: 'users#settings', as: "edit_user_setting"
-  post '/user/:id/setting', to: 'users#settings'
+  patch '/users/:id/edit', to: 'users#update_profile'
+  get '/users/:id/setting', to: 'users#settings', as: "edit_user_settings"
+  post '/users/:id/setting', to: 'users#settings'
 
 
   resources :users, except: [:destroy] 
