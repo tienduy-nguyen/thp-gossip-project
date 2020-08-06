@@ -17,6 +17,7 @@ class GossipsController < ApplicationController
   # GET /gossips/new
   def new
     @gossip = Gossip.new
+    @tags = Tag.all
   end
 
   # POST /gossips
@@ -25,6 +26,8 @@ class GossipsController < ApplicationController
     @gossip.user = current_user
     if @gossip.save
       flash[:success] = "Create Gossip Success!"
+      @tag = Tag.find(params[:tag])
+      GossipTag.create(tag: @tag, gossip: @gossip)
       redirect_to gossips_path
     else
       @gossip.errors.full_messages.each do |message|
@@ -38,6 +41,7 @@ class GossipsController < ApplicationController
   # GET /gossips/:id/edit
   def edit
     @gossip = Gossip.find(params[:id])
+    @tags = Tag.all
     # Check user
     if @gossip.user.id != current_user.id
       flash[:error] = "Permission denied!"

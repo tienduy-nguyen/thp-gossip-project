@@ -57,9 +57,6 @@ class UsersController < ApplicationController
   # PUT /users/:id/edit
   def update_profile
     @user = current_user
-    puts "-------------------------"
-    puts user_params[:city_id]
-    puts "-------------------------"
     @user.city_id = user_params[:city_id]
     @user.username = user_params[:username]
     @user.first_name = user_params[:first_name]
