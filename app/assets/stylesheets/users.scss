@@ -85,3 +85,14 @@
 .navbar-container {
   display: none;
 }
+
+.city-form select {
+  display: block;
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 2px;
+  color: #28a745;
+  background-color: transparent;
+  outline: none;
+}

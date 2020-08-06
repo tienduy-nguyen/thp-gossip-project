@@ -1,9 +1,10 @@
 
 <%= form_with(scope: :user, url: edit_user_path, method: :patch, local:true) do |f| %>
     <div class="form-group">
-        <%= f.label :city_id %>
-       <%= select_tag(:city_id, options_for_select(@cities.collect{ |u| [u.name, u.id] }), 
-       class: "form-control text-success") %>
+      <%= f.label :city_id %>
+      <div class="city-form">
+      <%= f.select :city_id , options_for_select(@cities.collect{ |u| [u.name, u.id] }), :class => 'form-control' %>
+      </div>
   </div>
   <div class="form-group">
       <%= f.label :username %>
