@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   include SessionsHelper
 
-  before_action :logged_in_user, only: [:show, :index]
+  before_action :logged_in_user, only: [:show]
   # GET /users
   def index
     @users = User.all.order(updated_at: :desc)

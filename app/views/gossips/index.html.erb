@@ -15,7 +15,7 @@
             <div class="display-2 pt-4">
               <strong>HOORAY!</strong>
             </div>
-            <div class="display-4">Hi <strong><%= current_user.full_name || current_user.first_name %></strong>!
+            <div class="display-4">Hi <strong><%= current_user.full_name || current_user.first_name unless current_user.nil? %></strong>!
             </div>
               <div class="display-4">
                Welcome to the Gossip Project!

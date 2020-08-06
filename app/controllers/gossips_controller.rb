@@ -2,7 +2,8 @@ class GossipsController < ApplicationController
   include SessionsHelper
   include GossipsHelper
 
-  before_action :gossip_filter, only: [:show, :edit, :update, :destroy]
+  before_action :logged_in_user
+  
   # GET /gossips
   def index
     @gossips = all_gossips

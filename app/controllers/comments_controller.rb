@@ -1,7 +1,7 @@
 class CommentsController < ApplicationController
   include SessionsHelper
   
-  before_action :find_commentable, only: :create
+  before_action :logged_in_user
 
   # GET comments/new
   def new
