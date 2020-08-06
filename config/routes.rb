@@ -7,10 +7,17 @@ Rails.application.routes.draw do
   get 'welcome', to: 'users#new'
   post 'welcome', to: 'users#create'
   get 'user/first_name', to: 'users#show_by_first_name'
+  get '/login', to: 'sessions#new'
+  post '/login', to: 'sessions#create'
+  delete '/logout', to: 'sessions#destroy'
+  get '/signup', to: 'users#new'
+  post '/signup', to: 'users#create'
+  get '/user/:id/setting', to: 'users#settings', as: "edit_user_setting"
+  post '/user/:id/setting', to: 'users#settings'
 
 
   resources :users, except: [:destroy] 
-  resources :session, only: [:new, :create, :destroy]
+  
   resources :gossips do
     resources :comments
   end

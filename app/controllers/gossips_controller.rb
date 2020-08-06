@@ -1,10 +1,11 @@
 class GossipsController < ApplicationController
   include SessionsHelper
+  include GossipsHelper
 
   before_action :gossip_filter, only: [:show, :edit, :update, :destroy]
   # GET /gossips
   def index
-    @gossips = Gossip.all.order(updated_at: :desc)
+    @gossips = all_gossips
   end
 
   # GET /gossips/:id

@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   include SessionsHelper
 
-  before_action :user_filter, only: [:show, :edit, :update, :destroy]
+  before_action :logged_in_user, only: [:show, :index]
   # GET /users
   def index
     @users = User.all.order(updated_at: :desc)
@@ -19,23 +19,23 @@ class UsersController < ApplicationController
 
   # GET /users/new
   def new
-    @user = session[:user_id]
+    @user = current_user
     if !@user.nil? 
       redirect_to gossips_path
     else
       @user = User.new
-      @city_id = City.all.sample.id
     end
   end
 
   # POST /users
   def create 
-    @user = User.new(user_params)
-    @user.password = user_params[:password]
+    @user = User.new(email: user_params[:email], 
+      password: user_params[:password],
+      password_confirmation: user_params[:password_confirmation])
     if @user.save
-      flash[:sucess] = "Create User Sucessfull!"
-      session[:user_id] = @user.id
-      redirect_to users_path
+      flash[:success] = "Create account succesffuly!"
+      log_in @user
+      redirect_back_or @user
     else
       @user.errors.full_messages.each do |message|
         flash[:error] = message
@@ -51,10 +51,10 @@ class UsersController < ApplicationController
   end
 
   # PUT /users/:id/edit
-  def update
+  def update_profile
     @user = User.find(params[:id])
     if @user.update(user_params)
-      flash[:success] = "Update User succesfull!"
+      flash[:success] = "Update user profile succesfully!"
       redirect_to users_path
     else
       @user.errors.full_messages.each do |message|
@@ -64,23 +64,34 @@ class UsersController < ApplicationController
     end
   end
 
+
   # DELETE /uses/:id
   def destroy
 
   end
 
-  def login 
-    @user = User.find_by_email(user_params[:email])
-    if @user.password == users_params[:password]
-      give_token
-    else
-      redirect_to root_path
-    end
+  # GET /users/:id/settings
+  def settings
+
+  end
+
+  # PUT /users/:id/settings
+  def update_settings
 
   end
 
   private
-    def user_filter
-      @user = User.find_by(:id => params[:id]) or not_found
+    def user_params
+      params.require(:user).permit(
+      :username,
+      :first_name, 
+      :last_name, 
+      :age, 
+      :description, 
+      :city,
+      :email,
+      :password,
+      :password_confirmation
+      )
     end
 end

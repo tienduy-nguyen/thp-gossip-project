@@ -22,9 +22,9 @@ class User < ApplicationRecord
   private
   def set_full_name
     if self.first_name.nil? && self.last_name.nil? 
-      self.full_name = self.email.split('@')[0]
+      self.full_name = self.email.split('@')[0].capitalize
     else
-      self.full_name = "#{self.first_name} #{self.last_name}".strip
+      self.full_name = "#{self.first_name.capitalize! }#{self.last_name.capitalize!}".strip
     end
   end
   def get_username

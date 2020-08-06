@@ -44,4 +44,8 @@ module ApplicationHelper
     return time_utc.strftime("%B %d,%Y at %k:%M:%p")
   end
 
+  def is_current_user?(user)
+    return current_user.id == user.id
+  end
+
 end

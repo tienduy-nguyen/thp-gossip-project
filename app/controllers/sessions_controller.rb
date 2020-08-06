@@ -1,33 +1,27 @@
 class SessionsController < ApplicationController
   include SessionsHelper
 
-  # GET Login
+  # GET /login
   def new
-    
+    @user = User.new
   end
 
-  # POST Login - Authenticate account
+  # POST /login - Authenticate account
   def create
-    @user = current_user
-
-    if @user && @user.authenticate(user_params[:password])
+    @user = User.find_by(email: params[:session][:email].downcase)
+    if @user && @user.authenticate(params[:session][:password])
       flash[:success] = "You are logged succesfully!"
-      redirect_to gossips_path
+      log_in @user
+      redirect_back_or gossips_path
     else
-      @user.errors.full_messages.each do |message|
-        flash[:error] = message
-      end
+      flash[:error] = 'Invalid email/password combination'
       render :new
     end
   end
 
-  # DELETE - Logout
+  # DELETE /logout
   def destroy
-    session.delete(:user_id)
+    log_out
+    redirect_to root_url
   end
-
-  private
-    def user_params
-      params.require(:user).permit(:email, :password)
-    end
 end

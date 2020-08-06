@@ -10,6 +10,14 @@
   margin-bottom: 0;
   opacity: 0.9;
 }
+#alert-section {
+  position: relative;
+  background-color: #f2d4ab;
+  top: -40px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  z-index: 100;
+}
 
 .card-tag {
   display: inline-block;
@@ -38,3 +46,4 @@ html {
 @import 'gossips';
 @import 'users';
 @import 'comments';
+@import 'sessions';

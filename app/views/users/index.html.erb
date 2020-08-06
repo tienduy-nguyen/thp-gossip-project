@@ -8,8 +8,9 @@
 <body>
 
   <!-- MAIN BODY -->
-  <div class="container py-4" style="margin-top: 20px">
-    <h2 class="mb-4">List of all available users</h2>
+  <section id="user-section">
+  <div class="container py-4">
+    <div class="mb-4 pt-4 display-4">List of all available users</div>
     <div class="row">
 
       <% @users.each do |user| %>
@@ -50,7 +51,7 @@
 
     </div>
   </div>
-
+  </section>
 </body>
 
 </html>
