@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <% content_for :title, "Gossips" %>
+</head>
+<body>
+
+
+  
+  <!-- MAIN BODY -->
+  <section id="gossip-section" class="py-4 mb-5">
+    <div class="container">
+      <div class="row mb-4">
+        <div class="col-lg-10">
+          <h1>Welcome <%= @first_name %> </h1>
+          <h4 class="mt-2">Here is the list gossips of all Moussaillons at THP</h4>
+        </div>
+        <div class="col-lg-2 mt-2">
+          <div>
+          <%= link_to new_gossip_path, :class => 'btn btn-success text-white' do %>
+            <i class="fas fa-plus"></i><span> New Gossip</span>
+          <% end %>
+          
+          </div>
+        </div>
+      </div>
+    
+    <!-- Gossip list -->
+    <%= render "gossips_list" %>
+
+
+    </div>
+  </section>
+
+</body>
+
+</html>
