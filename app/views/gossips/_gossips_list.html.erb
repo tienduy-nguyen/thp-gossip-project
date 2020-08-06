@@ -38,7 +38,7 @@
             </div>
 
             <div class="card-body ">
-              <div class="card-infomation">
+              <div class="card-information">
                 <span class="mb-2">Gossip n° <%= gossip.id.to_s%>: <%= link_to  gossip.title, gossip_path(:id => gossip.id) %><br>
                 </span>
                 <span class="text-muted"><%= truncate(gossip.content, :length => 200) %></span>
@@ -50,6 +50,22 @@
                   <%= tag.title %>
                 </a>
                 <% end %>
+              </div>
+              <div class="card-comments px-3">
+                <div class="card-comments-quantity d-flex justify-content-between">
+                  <div class="card-quantity-like">
+                      12 like
+                  </div>
+                  <div class="card-quantity-comment">
+                      29 comment
+                  </div>
+                   
+                </div>
+                <div class="row d-flex py-2  card-comments-btn">
+                  <button class="btn btn-light btn-like w-50"style="float-left"><i class="fas fa-thumbs-up"></i> Like</button>
+                  <a href="<%= gossip_path(gossip.id)%>" class="btn btn-light btn-comment ml-auto w-50"><i class="fas fa-comment"></i> Comment</a> 
+                </div>
+              
               </div>
             </div>
 

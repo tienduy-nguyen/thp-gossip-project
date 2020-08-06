@@ -4,9 +4,9 @@
   top: -20px;
 }
 .card-gossip {
-  height: 320px;
+  height: 380px;
 }
-.card-infomation {
+.card-information {
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
   height: 150px;
   margin-bottom: 6px;
@@ -14,4 +14,11 @@
 
 .card-bar {
   overflow-y: hidden;
+  height: 45px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  margin-bottom: 6px;
+}
+
+.card-comments-btn i {
+  color: #999;
 }
