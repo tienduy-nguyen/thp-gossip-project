@@ -15,7 +15,7 @@
     <div class="row">
       <div class="col-md-12 col-lg-10">
         <div class="card border-success mb-3">
-          <div class="card-header h5 text-primary"><%= @user.first_name %> <%= @user.last_name%></div>
+          <div class="card-header h5 text-primary"><%= @user.full_name %>></div>
           <div class="card-body text-success">
             <h6 class="card-title">Age: <%= @user.age %></h6>
             <h6 class="card-title">Email: <%= @user.email %></h6>
@@ -33,7 +33,7 @@
 
 
     <!-- List gossip -->
-    <h3 class="mt-4 mb-4">List gossips of <%= @user.first_name %></h3>
+    <h3 class="mt-4 mb-4">List gossips of <%= @user.full_name %></h3>
     <% @user.gossips.each do |gossip|%>
     <div class="row my-3">
       <div class="col-md-12">

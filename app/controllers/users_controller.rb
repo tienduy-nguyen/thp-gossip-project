@@ -24,6 +24,7 @@ class UsersController < ApplicationController
   # POST /users
   def create 
     @user = User.new(user_params)
+    @user.password = user_params[:password]
     if @user.save
       flash[:sucess] = "Create User Sucessfull!"
       redirect_to users_path
@@ -60,9 +61,22 @@ class UsersController < ApplicationController
 
   end
 
+  def login 
+    @user = User.find_by_email(user_params[:email])
+    if @user.password == users_params[:password]
+      give_token
+    else
+      redirect_to root_path
+    end
+
+  end
+
   private
     def user_params
-      params.require(:user).permit(:first_name, :last_name, :age, :email, :description, :city)
+      params.require(:user).permit(:first_name, :last_name, :age, :email, 
+      :password, 
+      :password_confirmation,
+      :description, :city)
     end
     def user_filter
       @user = User.find_by(:id => params[:id]) or not_found
