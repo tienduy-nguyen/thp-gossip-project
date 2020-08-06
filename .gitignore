@@ -9,6 +9,53 @@
 /test/tmp/
 /test/version_tmp/
 /tmp/
+.env
+nodemodules
+.vscode
+*.vscode
+/vscode
+/.vscode
+
+# various artifacts
+**.war
+*.rbc
+*.sassc
+.rspec
+.redcar/
+.sass-cache
+/config/config.yml
+/config/database.yml
+/coverage.data
+/coverage/
+/db/*.javadb/
+/db/*.sqlite3
+/doc/api/
+/doc/app/
+/doc/features.html
+/doc/specs.html
+/public/cache
+/public/stylesheets/compiled
+/public/system/*
+/spec/tmp/*
+/cache
+/capybara*
+/capybara-*.html
+/gems
+/spec/requests
+/spec/routing
+/spec/views
+/specifications
+rerun.txt
+pickle-email-*.html
+
+# bundler state
+/.bundle
+/vendor/bundle/
+
+# minimal Rails specific artifacts
+db/*.sqlite3
+/log/*
+/tmp/*
 
 # Used by dotenv library to load environment variables.
 # .env
@@ -30,7 +77,7 @@ build-iPhoneSimulator/
 # you should judge for yourself, the pros and cons are mentioned at:
 # https://guides.cocoapods.org/using/using-cocoapods.html#should-i-check-the-pods-directory-into-source-control
 #
-# vendor/Pods/
+vendor/Pods/
 
 ## Documentation cache and generated files:
 /.yardoc/
@@ -54,3 +101,25 @@ build-iPhoneSimulator/
 
 # Used by RuboCop. Remote config files pulled in from inherit_from directive.
 # .rubocop-https?--*
+
+# scm revert files
+**.orig
+
+# Mac finder artifacts
+.DS_Store
+
+# Netbeans project directory
+/nbproject/
+
+# RubyMine project files
+.idea
+
+# Textmate project files
+/*.tmproj
+
+# vim artifacts
+**.swp
+
+*.old
+*.jar
+xerial*.*
