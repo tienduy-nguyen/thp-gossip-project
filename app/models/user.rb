@@ -1,5 +1,3 @@
-require 'bcrypt'
-
 class User < ApplicationRecord
   has_many :gossips
   belongs_to :city, optional: true
@@ -12,16 +10,10 @@ class User < ApplicationRecord
   uniqueness: true,
   format: { with: /\A[^@\s]+@([^@\s]+\.)+[^@\s]+\z/, message: "email adress please" }
   validates :password, presence: true, length: { minimum: 6 }
+  
+  # Encrypt password automatique by Bcrypt with attribute: password_digest
+  has_secure_password 
 
-  has_secure_password # Encrypt password automatique by Bcrypt with attribute: password_digest
-  # def password
-  #   @password ||= Password.new(password_digest)
-  # end
-
-  # def password=(new_password)
-  #   @password = Password.create(new_password)
-  #   selft.password_digest = @password
-  # end
 
   before_create :set_full_name
   before_create :get_username

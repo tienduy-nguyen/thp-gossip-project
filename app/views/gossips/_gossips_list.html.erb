@@ -1,8 +1,8 @@
    <div class="row mb-3">
 
       <% @gossips.each do |gossip|%>
-        <div class="col-md-6 mb-2">
-          <div class="card p-2">
+        <div class="col-md-6 mb-4">
+          <div class="card px-2 py-4" style="height: 230px;">
             <div class="card-heading d-flex">
               <div class="pull-left d-flex author">
                 <div class="pull-left mr-2">
@@ -21,12 +21,15 @@
                <div class="ml-auto d-flex">
                     <div>
                       <%= link_to edit_gossip_path(:id => gossip.id) do %>
-                          <i class="fas fa-edit mr-2 text-info"></i>
+                          <i class="fas fa-edit mr-2 fa-lg text-info"></i>
                       <% end %>
                     </div>
 
                     <div>
-                    <a href="<%= gossip_path(gossip.id) %>" class="btn p-0" data-confirm="Are you sure want to delete it?" data-method="DELETE"><i class="fas fa-trash text-danger"></i></a>
+                    <a href="<%= gossip_path(gossip.id) %>" 
+                    class="btn p-0" 
+                    data-confirm="Are you sure want to delete it?" 
+                    data-method="DELETE"><i class="fas fa-trash fa-lg text-danger"></i></a>
                     </div>
               </div>
 

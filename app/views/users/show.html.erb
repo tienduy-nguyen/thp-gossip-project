@@ -15,11 +15,11 @@
     <div class="row">
       <div class="col-md-12 col-lg-10">
         <div class="card border-success mb-3">
-          <div class="card-header h5 text-primary"><%= @user.full_name %>></div>
+          <div class="card-header h5 text-primary"><%= @user.full_name || @user.first_name %></div>
           <div class="card-body text-success">
             <h6 class="card-title">Age: <%= @user.age %></h6>
             <h6 class="card-title">Email: <%= @user.email %></h6>
-            <h6 class="card-title">City: <%= @user.city.name %></h6>
+            <h6 class="card-title">City: <%= @user.city.name unless @user.city.nil? %></h6>
             <p class="card-text "><%= @user.description %></p>
           </div>
         </div>
@@ -33,7 +33,7 @@
 
 
     <!-- List gossip -->
-    <h3 class="mt-4 mb-4">List gossips of <%= @user.full_name %></h3>
+    <h3 class="mt-4 mb-4">List gossips of <%= @user.first_name %></h3>
     <% @user.gossips.each do |gossip|%>
     <div class="row my-3">
       <div class="col-md-12">
@@ -44,13 +44,13 @@
               <div class="ml-auto d-flex">
                 <div>
                   <%= link_to edit_gossip_path(:id => gossip.id) do %>
-                  <i class="fas fa-edit mr-2 text-info"></i>
+                  <i class="fas fa-edit mr-2 fa-lg text-info"></i>
                   <% end %>
                 </div>
 
                 <div>
                   <a href="<%= gossip_path(gossip.id) %>" class="btn p-0" data-confirm="Are you sure want to delete it?"
-                    data-method="DELETE"><i class="fas fa-trash text-danger"></i></a>
+                    data-method="DELETE"><i class="fas fa-trash fa-lg text-danger"></i></a>
                 </div>
               </div>
             </div>

@@ -17,8 +17,13 @@ class UsersController < ApplicationController
 
   # GET /users/new
   def new
-    @user = User.new
-    @city_id = City.all.sample.id
+    @user = session[:user_id]
+    if !@user.nil? 
+      redirect_to gossips_path
+    else
+      @user = User.new
+      @city_id = City.all.sample.id
+    end
   end
 
   # POST /users
@@ -27,6 +32,7 @@ class UsersController < ApplicationController
     @user.password = user_params[:password]
     if @user.save
       flash[:sucess] = "Create User Sucessfull!"
+      session[:user_id] = @user.id
       redirect_to users_path
     else
       @user.errors.full_messages.each do |message|

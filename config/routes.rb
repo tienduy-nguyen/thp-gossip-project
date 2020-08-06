@@ -10,7 +10,7 @@ Rails.application.routes.draw do
 
 
   resources :users, except: [:destroy] 
-
+  resources :session, only: [:new, :create, :destroy]
   resources :gossips do
     resources :comments
   end
