@@ -25,7 +25,7 @@
     <div class="row">
       <div class="col-lg-10">
         <img class="img-fluid rounded" 
-        src="https://source.unsplash.com/random/1600x900" alt=""
+        src="https://source.unsplash.com/random?nature/1600x900" alt=""
         style="max-height:400px; width: 100%">
 
         <section class="gossip-content-section my-5">
@@ -57,8 +57,11 @@
 
     <hr>
     <div class="gossip-comments d-flex">
-      <button class="btn btn-light btn-like" style="float-left"><i class="fas fa-thumbs-up"></i> Like</button>
-      <div class="ml-4 p-1" style="font-size: 2rem">12 like</div>
+      <a class="btn btn-light btn-like <%= user_liked_class(@gossip) %>" 
+      href="<%= gossip_likes_path(@gossip)%>"
+      data-method="post"
+      style="float-left"><i class="fas fa-thumbs-up py-3"></i> Like</a>
+      <div class="ml-4 p-1" style="font-size: 2rem"><%= @gossip.likes.size %> <%=(@gossip.likes.count) == 1 ? ' Like' : ' Likes'%></div>
     </div>
 
 
