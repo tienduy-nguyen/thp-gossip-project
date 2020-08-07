@@ -11,7 +11,13 @@ class SessionsController < ApplicationController
     @user = User.find_by(email: params[:session][:email].downcase)
     if @user && @user.authenticate(params[:session][:password])
       flash[:success] = "You are logged succesfully!"
-      log_in @user
+
+      # Login and set to session
+      log_in(@user)
+
+      # Login and set to cookies
+      params[:remember_me] ? remember(@user) : forget(@user)
+
       redirect_back_or gossips_path
     else
       flash[:error] = 'Invalid email/password combination'

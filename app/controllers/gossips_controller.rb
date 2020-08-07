@@ -6,7 +6,7 @@ class GossipsController < ApplicationController
   
   # GET /gossips
   def index
-    @gossips = all_gossips
+    @gossips = all_gossips.take(20)
   end
 
   # GET /gossips/:id

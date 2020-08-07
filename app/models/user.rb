@@ -15,6 +15,12 @@ class User < ApplicationRecord
   # Encrypt password automatique by Bcrypt with attribute: password_digest
   has_secure_password 
 
+  def remember(remember_token)
+    remember_digest = BCrypt::Password.create(remember_token)
+    self.update(remember_digest: remember_digest)
+  end
+
+
 
   before_create :set_full_name
   before_create :get_username

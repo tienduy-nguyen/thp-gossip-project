@@ -1,6 +1,13 @@
 # THP Gossip Project
 This is my completed gossip project at The Hacking Project
-
+  - Using Bcrypt for password_hash
+  - Using Session to store current_user logged
+  - Home page: Landing page show the last gossips and all gossips with color card
+  - CRUD: Gossip
+  - CRU : User
+  - System Like for gossip by user
+  - System Tag of gossip
+  
 
 # The Gossip Project - Views v4.0
 _l'app putasse_
@@ -17,8 +24,8 @@ Social network for sharing and commenting on gossip, created as part of The Hack
 
 - Pre-install bundle et gem dependencies.
   ```
-  bundle install
-  bundle update
+  $ bundle install
+  $ bundle update
   ```
 - Configuration de data base.
   
@@ -41,8 +48,9 @@ Social network for sharing and commenting on gossip, created as part of The Hack
 - Run the database on your computer
   
   ```bash
-  rails db:create #ou rails db:create:all #ou rake db:create:all
-  rails db:migrate
+  $ rails db:create #ou rails db:create:all #ou rake db:create:all
+  $ rails db:migrate
+  $ rails db:seed
   ```
 
 
@@ -55,3 +63,15 @@ Social network for sharing and commenting on gossip, created as part of The Hack
 - [:seedling: Vivien Ploix](https://github.com/Vivien-Ploix)
 - [:fire: Chérif BA](https://github.com/barifche)
 
+
+## Todo
+- [x] Using Cookies to store authentication
+- [ ] Forget password, Reset password
+- [ ] System Comments with polymorphic
+- [ ] System Like for comments
+- [ ] Present "Load more" for all list gossip in Home Page and Gossips Page
+- [ ] Create page for City and show all gossip by City
+- [ ] Add more fields for User: avatar (with upload file functionality), bio
+- [ ] System Category for gossip post
+- [ ] Possible to create many tags for a gossip post
+- [ ] Deploy to heroku

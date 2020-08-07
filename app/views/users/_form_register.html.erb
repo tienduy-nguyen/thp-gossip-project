@@ -28,6 +28,10 @@
               autocomplete: false, placeholder: 'Confirm Password', 
               required: true, minlength: 6 %>
  </div>
+ <div class="form-check ml-1 mb-4">
+    <%= check_box_tag :remember_me, 1, params[:remember_me], class: 'form-check-input'%>
+    <label class="form-check-label" for="exampleCheck1">Remember me</label>
+  </div>
  <%= f.submit 'SIGNUP', class:'btn btn-primary form-control' %>
 
  <% end %>

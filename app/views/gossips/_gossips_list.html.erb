@@ -54,10 +54,10 @@
               <div class="card-comments px-3">
                 <div class="card-comments-quantity d-flex justify-content-between">
                   <div class="card-quantity-like">
-                      <a href="<%= gossip_path(gossip.id)%>"><%= gossip.likes.size %> <%=(gossip.likes.count) == 1 ? ' Like' : ' Likes'%></a>
+                      <a href="<%= gossip_path(gossip.id)%>"><%= gossip.likes.size %> <%=(gossip.likes.count) <= 1 ? ' Like' : ' Likes'%></a>
                   </div>
                   <div class="card-quantity-comment">
-                      <a href="<%= gossip_path(gossip.id)%>"><%= gossip.comments.size %> <%=(gossip.comments.count) == 1 ? ' Comment' : ' Comments'%></a>
+                      <a href="<%= gossip_path(gossip.id)%>"><%= gossip.comments.size %> <%=(gossip.comments.count) <= 1 ? ' Comment' : ' Comments'%></a>
                   </div>
                    
                 </div>

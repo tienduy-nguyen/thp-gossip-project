@@ -35,6 +35,11 @@ class UsersController < ApplicationController
     if @user.save
       flash[:success] = "Create account succesffuly!"
       log_in @user
+
+      if params[:remember_me]
+        # Login and set to cookies
+        remember @user
+      end
       redirect_back_or @user
     else
       @user.errors.full_messages.each do |message|

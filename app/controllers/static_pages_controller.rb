@@ -1,5 +1,6 @@
 class StaticPagesController < ApplicationController
   include SessionsHelper
+  include GossipsHelper
 
   def team
   end
@@ -9,7 +10,7 @@ class StaticPagesController < ApplicationController
 
   def home
     @first_name = params[:first_name] 
-    @gossips = Gossip.all.order(updated_at: :desc)
+    @gossips = all_gossips.take(30)
     @lastest_gossips = @gossips.take(16)
   end
 
