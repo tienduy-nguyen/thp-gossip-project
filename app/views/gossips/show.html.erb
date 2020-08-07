@@ -10,7 +10,7 @@
   <div class="container">
     <div class="row">
       <!-- Post Content Column -->
-      <div class="col-lg-10">
+      <div class="col-lg-12">
         <h1 class="mt-4"><%= @gossip.title %></h1>
         <p class="lead">by
           <a href="<%= user_path(@gossip.user.id)%>"><%= @gossip.user.full_name || @gossip.user.first_name %></a>
@@ -18,16 +18,24 @@
         <hr>
         <!-- Date/Time -->
         <p class="text-muted">Posted on <%= get_time_verbose(@gossip.created_at)%></p>
-        <img class="img-fluid rounded" src="https://source.unsplash.com/random?workspace" alt="">
+
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-lg-10">
+        <img class="img-fluid rounded" 
+        src="https://source.unsplash.com/random/1600x900" alt=""
+        style="max-height:400px; width: 100%">
 
         <section class="gossip-content-section my-5">
           <p class="lead"><%= @gossip.content %></p>
-
+        </section>
       </div>
 
       <!-- Tags Widget -->
       <% @tags = get_tags_by_gossipid(@gossip.id) %>
-      <div class="col-lg-2 card my-4 p-0" style="max-height: 400px;">
+      <div class="col-lg-2 card p-0 card-gossip-tag" style="max-height: 400px;">
         <h5 class="card-header ">Tags</h5>
         <div class="card-body">
           <div class="row">
@@ -42,12 +50,16 @@
           </div>
         </div>
       </div>
+      <!-- Eng tag widget -->
     </div>
+
+
+
     <hr>
-     <div class="gossip-comments d-flex">
-          <button class="btn btn-light btn-like"style="float-left"><i class="fas fa-thumbs-up"></i> Like</button>
-           <div class="ml-4 p-1" style="font-size: 2rem">12 like</div>      
-      </div>
+    <div class="gossip-comments d-flex">
+      <button class="btn btn-light btn-like" style="float-left"><i class="fas fa-thumbs-up"></i> Like</button>
+      <div class="ml-4 p-1" style="font-size: 2rem">12 like</div>
+    </div>
 
 
     <div class="row">
@@ -64,7 +76,7 @@
         </div>
       </div>
 
-     
+
       <!-- Single Comment -->
       <div class="media mb-4">
         <img class="d-flex mr-3 rounded-circle" src="http://placehold.it/50x50" alt="">
@@ -111,17 +123,8 @@
     </div>
 
 
-
-  </div>
-
-  </div>
-  <!-- /.row -->
-
   </div>
   <!-- /.container -->
-
-
-
 </body>
 
 </html>
