@@ -17,6 +17,7 @@ class SessionsController < ApplicationController
 
       # Login and set to cookies
       params[:remember_me] ? remember(@user) : forget(@user)
+    
 
       redirect_back_or gossips_path
     else

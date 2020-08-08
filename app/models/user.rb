@@ -35,7 +35,9 @@ class User < ApplicationRecord
     end
   end
   def get_username
-    self.username = self.email.split('@')[0]
+    if self.username.length <1
+      self.username = self.email.split('@')[0]
+    end
   end
 
 end

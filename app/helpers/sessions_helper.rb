@@ -37,6 +37,7 @@ module SessionsHelper
   def store_location
     session[:forwarding_url] = request.original_url if request.get?
   end
+  
   def remember(user)
     remember_token = SecureRandom.urlsafe_base64
     user.remember(remember_token)
