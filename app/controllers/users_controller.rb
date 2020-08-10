@@ -9,12 +9,12 @@ class UsersController < ApplicationController
 
   # GET /users/:id
   def show
-    @user = User.find_by(:id => params[:id])
+    @user = User.find_by(:id => params[:id]) or not_found
   end
 
   # GET /users/:first_name
   def show_by_first_name
-    @user = User.find_by(:first_name => params[:first_name])
+    @user = User.find_by(:first_name => params[:first_name]) or not_found
   end
 
   # GET /users/new
@@ -32,6 +32,9 @@ class UsersController < ApplicationController
     @user = User.new(email: user_params[:email], 
       password: user_params[:password],
       password_confirmation: user_params[:password_confirmation])
+    @user.first_name = user_params[:first_name]
+    @user.last_name = user_params[:last_name]
+    @user.username = user_params[:username]
     if @user.save
       flash[:success] = "Create account succesffuly!"
       log_in @user
@@ -51,7 +54,7 @@ class UsersController < ApplicationController
 
   # GET /users/:id/edit
   def edit
-    @user = User.find(params[:id])
+    @user = User.find(params[:id]) or not_found
     if @user.id != current_user.id
       flash[:error] = "Permission denided!"
       return redirect_to users_path

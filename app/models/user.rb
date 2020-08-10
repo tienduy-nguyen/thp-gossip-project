@@ -1,4 +1,6 @@
 class User < ApplicationRecord
+  after_create :welcome_send_mail
+
   has_many :gossips
   belongs_to :city, optional: true
   has_many :sent_messages, foreign_key: 'sender_id', class_name: "PrivateMessage"
@@ -31,13 +33,16 @@ class User < ApplicationRecord
     if self.first_name.nil? && self.last_name.nil? 
       self.full_name = self.email.split('@')[0].capitalize
     else
-      self.full_name = "#{self.first_name.capitalize} #{self.last_name.capitalize}".strip
+      self.full_name = "#{self.first_name.capitalize unless self.first_name.nil?} #{self.last_name.capitalize unless self.last_name.nil?}".strip
     end
   end
   def get_username
-    if self.username.length <1
+    if self.username.nil? || self.username.length < 1
       self.username = self.email.split('@')[0]
     end
+  end
+  def welcome_send_mail
+    UserMailer.welcome_email(self).deliver_now
   end
 
 end

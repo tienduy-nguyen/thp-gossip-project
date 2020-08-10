@@ -123,3 +123,4 @@ vendor/Pods/
 *.old
 *.jar
 xerial*.*
+.env
