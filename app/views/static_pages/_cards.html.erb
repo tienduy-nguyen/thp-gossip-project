@@ -4,21 +4,33 @@
       <!-- Card Gossip -->
       <div class="col-sm-12 col-md-12 col-lg-4">
         <div class="blog-grid">
-          <div class="blog-img">
+          <div class="blog-img d-flex flex-column" >
             <div class="blog-card-user-name">
               <a href="<%= user_path(gossip.user.id)%>">
                 <i class="fas fa-user"></i> <span><%= gossip.user.first_name || gossip.user.username %></span>
               </a>
             </div>
-            <div class="blog-img-heading">
+            <div class="blog-img-heading col">
               <span><small>Created at: <%= get_time(gossip.created_at) %></small></span>
               <span><small>Updated at: <%= get_time(gossip.updated_at) %></small></span>
             </div>
+
+            <div class="blog-like-comment d-flex justify-content-between px-3 pb-2">
+              <div>
+                 <i class="fas fa-thumbs-up"></i> <span> <%= gossip.likes.count %></span>
+              </div>
+              <div>
+               <i class="fas fa-comment"></i> <span> <%= gossip.comments.count %></span>
+              </div>
+            </div>
+
+
+
           </div>
           <div class="blog-info">
             <div class="blog-info-text">
               <h5><a href="<%= gossip_path(gossip.id) %>"><%= gossip.title %></a></h5>
-              <p class=""><%= truncate(gossip.content, :length => 90) %></p>
+              <p class=""><%= truncate(gossip.content, :length => 60) %></p>
             </div>
             <div class="btn-bar">
               <% @tags.each do |tag|%>

@@ -1,7 +1,0 @@
-$('#home-gossips').append('<%= j render @gossips %>');
-<% if @gossips.next_page %>
-  $('.pagination').replaceWith('<%= j will_paginate @gossips %>');
-<% else %>
-  $(window).off('scroll');
-  $('.pagination').remove();
-<% end %>

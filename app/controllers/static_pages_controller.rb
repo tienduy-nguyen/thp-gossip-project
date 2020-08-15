@@ -11,7 +11,7 @@ class StaticPagesController < ApplicationController
   def home
     @first_name = params[:first_name] 
     @lastest_gossips = Gossip.all.limit(16)
-    @gossips = Gossip.paginate(page: params[:page], per_page: 18).order('updated_at DESC')
+    @gossips = Gossip.limit(15).order('updated_at DESC')
   end
 
 end

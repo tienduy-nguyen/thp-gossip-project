@@ -24,7 +24,6 @@
   }
 
   .welcome-inner {
-    margin-top: 20em;
     margin-bottom: auto;
     color: #fff;
   }
@@ -37,11 +36,21 @@
     }
   }
 }
+@media all and (min-width: 768px) {
+  #welcome-section {
+    .welcome-inner {
+      margin-top: 35vh;
+    }
+  }
+}
 
 @media all and (max-width: 768px) {
   #welcome-section {
     #welcome-text {
       font-size: 3.5rem;
+    }
+    .welcome-inner {
+      margin-top: 20vh;
     }
   }
 }
@@ -67,17 +76,20 @@
   background: #ffffff;
   margin-top: 60px;
   margin-bottom: 15px;
-  min-height: 400px;
   overflow-y: auto;
+  transition: 0.5s ease;
 
   &:hover {
-    box-shadow: 0px 1px 8px 2px rgba(0, 0, 0, 0.25);
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.25);
+    transform: scale(1.1);
+    overflow: hidden;
   }
 }
 
 .blog-grid .blog-img {
   position: relative;
-  min-height: 150px;
+  display: block;
+  min-height: 180px;
   width: 100%;
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }
@@ -123,6 +135,17 @@
   }
 }
 
+.blog-like-comment {
+  position: absolute;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  color: #444;
+  i {
+    color: #444;
+  }
+}
+
 .blog-info {
   padding: 20px;
 }
@@ -138,7 +161,9 @@
   margin: 0;
 }
 .blog-info .btn-bar {
-  margin-top: 20px;
+  margin-top: 6px;
+  height: 30px;
+  overflow: hidden;
 }
 
 .blog-info-text {
@@ -146,9 +171,6 @@
   height: 130px;
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
   overflow-y: hidden;
-}
-
-.btn-bar {
 }
 
 // Carousel

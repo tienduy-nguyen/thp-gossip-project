@@ -14,8 +14,8 @@
         <div class="row flex-column text-center">
           <h1 id="welcome-text" class="display-2">Welcome To Our Project</h1>
           <p class="lead">We make the life become more meaningful, hapiness.</p>
-          <p class="">Learn more about us or Getting started to start write your gossips.</p>
-          <div class="d-flex m-auto mt-5">
+          <p class="d-none d-md-block">Learn more about us or Getting started to start write your gossips.</p>
+          <div class="d-flex m-auto mt-5 d-none d-md-block">
             <button class="btn btn-primary btn-lg mr-4" 
                     onClick='window.location="#line-welcome"'>Learn More
             </button>
@@ -62,7 +62,7 @@
                   <!-- Card Gossip -->
                   <div class="col-md-6 col-lg-3">
                     <div class="blog-grid card">
-                      <div class="blog-img">
+                      <div class="blog-img card-img-top">
                         <div class="blog-card-user-name">
                           <a href="<%= user_path(gossip.user.id)%>">
                             <i class="fas fa-user"></i> <span><%= gossip.user.first_name || gossip.user.username %></span>
@@ -72,13 +72,21 @@
                           <span><small>Created at: <%= get_time(gossip.created_at) %></small></span>
                           <span><small>Updated at: <%= get_time(gossip.updated_at) %></small></span>
                         </div>
+                         <div class="blog-like-comment d-flex justify-content-between px-3 pb-2">
+                          <div>
+                            <i class="fas fa-thumbs-up"></i> <span> <%= gossip.likes.count %></span>
+                          </div>
+                          <div>
+                          <i class="fas fa-comment"></i> <span> <%= gossip.comments.count %></span>
+                          </div>
+                        </div>
                       </div>
                       <div class="blog-info">
                         <div class="blog-info-text">
                           <h5><a href="<%= gossip_path(gossip.id) %>"><%= gossip.title %></a></h5>
-                          <p class=""><%= truncate(gossip.content, :length => 90) %></p>
+                          <p class=""><%= truncate(gossip.content, :length => 60) %></p>
                         </div>
-                        <div class="btn-bar">
+                        <div class="btn-bar d-none d-lg-block">
                           <% @tags.each do |tag|%>
                           <a class="card-tag" href="<%= tag.title %>">
                             <%= tag.title %>
@@ -122,12 +130,12 @@
       <h1 class="mt-5 text-center">Here is the list of all gossips</h1><br>
 
       <%= render 'cards'%>
+      <div class="mx-auto text-center mt-4">
+        <div>
+        <a href="<%= gossips_path %>" class="btn btn-primary">View all gossips</a>
+        </div>
 
-
-      <div id="infinite-scrolling">
-      <%= will_paginate @gossips, renderer: WillPaginate::ActionView::Bootstrap4LinkRenderer %>
       </div>
-
     </div>
   </section>
   <!-- End all Gossip Section -->
