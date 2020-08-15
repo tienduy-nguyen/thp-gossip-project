@@ -4,7 +4,7 @@ class UsersController < ApplicationController
   before_action :logged_in_user, only: [:show]
   # GET /users
   def index
-    @users = User.all.order(updated_at: :desc)
+    @users = User.paginate(page: params[:page], per_page: 20).order('updated_at DESC')
   end
 
   # GET /users/:id

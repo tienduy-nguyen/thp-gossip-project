@@ -120,42 +120,14 @@
   <section class="blog-listing gray-bg">
     <div class="container">
       <h1 class="mt-5 text-center">Here is the list of all gossips</h1><br>
-      <div class="row">
-        <% @gossips.each do |gossip| %>
-        <% @tags = get_tags_by_gossipid(gossip.id) %>
-        <!-- Card Gossip -->
-        <div class="col-sm-12 col-md-12 col-lg-4">
-          <div class="blog-grid">
-            <div class="blog-img">
-              <div class="blog-card-user-name">
-                <a href="<%= user_path(gossip.user.id)%>">
-                  <i class="fas fa-user"></i> <span><%= gossip.user.first_name || gossip.user.username %></span>
-                </a>
-              </div>
-              <div class="blog-img-heading">
-                <span><small>Created at: <%= get_time(gossip.created_at) %></small></span>
-                <span><small>Updated at: <%= get_time(gossip.updated_at) %></small></span>
-              </div>
-            </div>
-            <div class="blog-info">
-              <div class="blog-info-text">
-                <h5><a href="<%= gossip_path(gossip.id) %>"><%= gossip.title %></a></h5>
-                <p class=""><%= truncate(gossip.content, :length => 90) %></p>
-              </div>
-              <div class="btn-bar">
-                <% @tags.each do |tag|%>
-                <a class="card-tag" href="<%= tag.title %>">
-                  <%= tag.title %>
-                </a>
-                <% end %>
-              </div>
-            </div>
-          </div>
-        </div>
-        <!-- End Card Gossip -->
-        <% end %>
 
+      <%= render 'cards'%>
+
+
+      <div id="infinite-scrolling">
+      <%= will_paginate @gossips, renderer: WillPaginate::ActionView::Bootstrap4LinkRenderer %>
       </div>
+
     </div>
   </section>
   <!-- End all Gossip Section -->

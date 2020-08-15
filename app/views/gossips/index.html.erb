@@ -37,10 +37,14 @@
           </div>
         </div>
       </div>
-    
-    <!-- Gossip list -->
-    <%= render "gossips_list" %>
 
+         <!-- Gossip list -->
+        <%= render "gossips_list" %>
+
+
+      <div id="infinite-scrolling">
+        <%= will_paginate @gossips, renderer:  WillPaginate::ActionView::Bootstrap4LinkRenderer %>
+      </div>
 
     </div>
   </section>

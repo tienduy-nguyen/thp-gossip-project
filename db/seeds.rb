@@ -13,6 +13,7 @@
     zip_code: Faker::Address.zip_code,
   )
 end
+
 puts "Cities created!"
 
 10.times do
