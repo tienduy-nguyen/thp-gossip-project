@@ -27,11 +27,15 @@
       <% end %>
     </div>
 
-    <div class="comment-children-form mb-2" id="">
-        <form>
-            <input type="text" class="form-control" placeholder="Write a reply...">
-           <input type="submit" style="position: absolute; left: -9999px"/>
-        </form>
+    <div class="comment-children-form mb-2">
+         <%= form_for [Comment.new] do |f| %>
+            <div class="form-group">
+              <%= f.text_field :content, class: "form-control", placeholder: "Add a Reply" %>
+            <%= hidden_field_tag "comment[comment_id]", gossip_comment.id %>
+            </div>
+            <%= f.submit "Reply" ,class: "btn btn-primary", style: "position: absolute; left: -9999px" %>
+        <% end %>
+
     </div>
 
   </div>
