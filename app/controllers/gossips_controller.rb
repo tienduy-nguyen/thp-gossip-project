@@ -7,6 +7,10 @@ class GossipsController < ApplicationController
   # GET /gossips
   def index
     @gossips = Gossip.paginate(page: params[:page], per_page: 16).order('updated_at DESC')
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   # GET /gossips/:id

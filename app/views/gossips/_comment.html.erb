@@ -1,0 +1,36 @@
+<!-- Single Comment -->
+<div class="media mb-4">
+  <img class="d-flex mr-3 rounded-circle" src="http://placehold.it/50x50" alt="">
+  <div class="media-body">
+    <h5 class="mt-0">Commenter Name</h5>
+    <div class="media-body-comment">
+        <div class="media-body-comment-text">
+            Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio,
+          vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec
+          lacinia congue felis in faucibus.
+        </div>
+        <div class="comment-quantity-like" >
+              <i class="fas fa-thumbs-up"></i> 2
+        </div>
+      
+    </div>
+    <div class="media-footer d-flex">
+        <div class="media-like mr-4">
+          <a href="">Like</a>
+        </div>
+        <button class="btn-reply">Reply</button>
+    </div>
+
+    <div class="comment-childrent">
+          <%= render 'comment_children'%>
+    </div>
+
+    <div class="comment-children-form mb-4" id="">
+        <form>
+            <input type="text" class="form-control" placeholder="Write a reply...">
+           <input type="submit" style="position: absolute; left: -9999px"/>
+        </form>
+    </div>
+
+  </div>
+</div>

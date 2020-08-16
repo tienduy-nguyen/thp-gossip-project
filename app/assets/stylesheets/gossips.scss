@@ -30,3 +30,45 @@
     color: #027bff;
   }
 }
+
+.media-body-comment-text {
+  background: rgba(0, 0, 0, 0.05);
+  border-radius: 20px;
+  padding: 4px 20px;
+}
+.comment-quantity-like {
+  color: #027bff;
+  background: rgba(0, 0, 0, 0.05);
+  width: 50px;
+  border-radius: 999px;
+  float: right;
+  margin-top: -8px;
+  margin-right: 10px;
+  i {
+    margin-left: 10px;
+  }
+}
+.media-footer {
+  margin-left: 20px;
+}
+.comment-children-form {
+  margin-left: 70px;
+  display: none;
+}
+
+.btn-reply {
+  cursor: pointer;
+  padding-top: 0;
+  padding-bottom: 0;
+  color: #027bff;
+  outline: none;
+  border: none;
+  background: transparent;
+  &:hover {
+    text-decoration: underline;
+  }
+  &:focus {
+    border: none;
+    outline: none;
+  }
+}
