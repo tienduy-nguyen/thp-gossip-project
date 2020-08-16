@@ -66,7 +66,6 @@ Social network for sharing and commenting on gossip, created as part of The Hack
 - [:v: Hugo Péran Séjourné](https://github.com/HugoPeranSejourne)
 - [:seedling: Mathieu JOLY](https://github.com/mathieu-superpose)
 - [:seedling: Vivien Ploix](https://github.com/Vivien-Ploix)
-- [:fire: Chérif BA](https://github.com/barifche)
 
 
 ## Images projects
