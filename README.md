@@ -1,6 +1,6 @@
 # THP Gossip Project
 
-Check demo of project at : [https://td-gossip.herokuapp.com](https://td-gossip.herokuapp.com)
+Check demo of project at : [https://td-gossip2.herokuapp.com](https://td-gossip2.herokuapp.com)
 
 This is my completed gossip project at The Hacking Project
   - Using Bcrypt for password_hash
