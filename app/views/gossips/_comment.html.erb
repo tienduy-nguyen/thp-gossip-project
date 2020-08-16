@@ -16,7 +16,8 @@
     </div>
     <div class="media-footer d-flex">
         <div class="media-like mr-4">
-          <a href="<%= comment_likes_path(gossip_comment)%>" data-method="post" class="btn-like">Like</a>
+          <a href="<%= comment_likes_path(gossip_comment)%>" data-method="post" 
+          class="btn-like  <%= user_liked_class(gossip_comment) %>">Like</a>
         </div>
         <button class="btn-reply">Reply</button>
     </div>
