@@ -33,7 +33,7 @@ class GossipsController < ApplicationController
       flash[:success] = "Create Gossip Success!"
       @tag = Tag.find(params[:tag])
       GossipTag.create(tag: @tag, gossip: @gossip)
-      redirect_to gossips_path
+      redirect_back(fallback_location: gossips_path)
     else
       @gossip.errors.full_messages.each do |message|
         flash[:error] = message
@@ -59,7 +59,7 @@ class GossipsController < ApplicationController
     @gossip = Gossip.find(params[:id])
     if @gossip.update(gossip_params)
       flash[:success] = "Update Gossip Success!"
-      redirect_to gossips_path
+      redirect_back(fallback_location: gossips_path)
     else
       @gossip.errors.full_messages.each do |message|
       flash[:error] = message

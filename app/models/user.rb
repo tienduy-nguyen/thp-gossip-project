@@ -28,6 +28,10 @@ class User < ApplicationRecord
   before_create :get_username
   before_update :set_full_name
 
+  def already_liked?(object)
+    Like.where(user_id: self.id, gossip_id: object.id).exists? ||  Like.where(user_id: self.id, comment_id: object.id).exists?
+  end
+
   private
   def set_full_name
     if self.first_name.nil? && self.last_name.nil? 
