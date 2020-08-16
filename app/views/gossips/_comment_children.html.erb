@@ -1,22 +1,22 @@
-<div class="media mt-4">
+<div class="media mt-2">
   <img class="d-flex mr-3 rounded-circle" src="http://placehold.it/50x50" alt="">
   <div class="media-body">
-    <h5 class="mt-0">Commenter Name</h5>
+    <h5 class="mt-0"><%= comment.user.full_name || comment.user.first_name %></h5>
    <div class="media-body-comment">
     
       <div class="media-body-comment-text">
-          Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio,
-        vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec
-        lacinia congue felis in faucibus.
+         <%= comment.content %>
       </div>
-      <div class="comment-quantity-like" >
-            <i class="fas fa-thumbs-up"></i> 2
-      </div>
+      <% if comment.likes.count > 0%>
+            <div class="comment-quantity-like" >
+                  <i class="fas fa-thumbs-up"></i> <%= comment.likes.count %>
+            </div>
+      <% end %>
       
     </div>
-    <div class="media-footer d-flex mb-3">
+    <div class="media-footer d-flex mb-2">
         <div class="media-like mr-4">
-          <a href="">Like</a>
+          <a href="" class="btn-like">Like</a>
         </div>
         <button class="btn-reply ">Reply</button>
     </div>

@@ -7,7 +7,7 @@
 # # # GossipTag.destroy_all
 # # # Tag.destroy_all
 
-10.times do
+10.times do |i|
   City.create(
     name: Faker::Address.city,
     zip_code: Faker::Address.zip_code,
@@ -16,7 +16,7 @@ end
 
 puts "Cities created!"
 
-10.times do
+10.times do |i|
   User.create(
     first_name: Faker::Name.first_name,
     last_name: Faker::Name.last_name,
@@ -28,7 +28,7 @@ puts "Cities created!"
 end
 puts "Users created!"
 
-20.times do
+20.times do |i|
   Gossip.create(
     title: Faker::Movie.title[0..11],
     content: Faker::Quote.matz,
@@ -46,7 +46,7 @@ puts "Gossips created!"
 end
 puts "Tags created!"
 
-30.times do
+30.times do |i|
   GossipTag.create(
     tag: Tag.all.sample,
     gossip: Gossip.all.sample,
@@ -54,7 +54,7 @@ puts "Tags created!"
 end
 puts "GossipsTags created!"
 
-15.times do
+15.times do |i|
   PrivateMessage.create(
     recipient: User.all.sample,
     sender: User.all.sample,
@@ -63,3 +63,37 @@ puts "GossipsTags created!"
 end
 puts "PrivateMessages created!"
 
+500.times do |i|
+  Comment.create(
+    content:  Faker::Quote.matz,
+    commentable: Gossip.all.sample,
+    user: User.all.sample
+  )
+end
+puts "Comments gossips created!"
+
+500.times do |i|
+  Comment.create(
+    content:  Faker::Quote.matz,
+    commentable: Comment.all.sample,
+    user: User.all.sample
+  )
+end
+puts "Comments comments created!"
+
+
+1000.times do |i|
+  Like.create(
+    user: User.all.sample,
+    gossip: Gossip.all.sample
+  )
+end
+puts "Like gossips created!"
+
+2000.times do |i|
+  Like.create(
+    user: User.all.sample,
+    comment: Comment.all.sample
+  )
+end
+puts "Like comments created!"

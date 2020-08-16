@@ -5,8 +5,10 @@ This is my completed gossip project at The Hacking Project
   - Home page: Landing page show the last gossips and all gossips with color card
   - CRUD: Gossip
   - CRU : User
+  - System comments for gossips
   - System Like for gossip by user
   - System Tag of gossip
+  - Pagination
   
 
 # The Gossip Project - Views v4.0
@@ -64,14 +66,12 @@ Social network for sharing and commenting on gossip, created as part of The Hack
 - [:fire: Chérif BA](https://github.com/barifche)
 
 
-## Todo
-- [x] Using Cookies to store authentication
-- [ ] Forget password, Reset password
-- [ ] System Comments with polymorphic
-- [ ] System Like for comments
-- [ ] Present "Load more" for all list gossip in Home Page and Gossips Page
-- [ ] Create page for City and show all gossip by City
-- [ ] Add more fields for User: avatar (with upload file functionality), bio
-- [ ] System Category for gossip post
-- [ ] Possible to create many tags for a gossip post
-- [ ] Deploy to heroku
+## Images projects
+<div style="margin-top: 10px; align-text: center; align-item: center">
+
+  <img src="app/assets/images/home-page.png">
+  <img src="app/assets/images/gossip-page.png">
+  <img src="app/assets/images/gossip-page.png">
+  <img src="app/assets/images/pagination.png">
+
+</div>

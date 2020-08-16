@@ -21,13 +21,13 @@ Rails.application.routes.draw do
   
   resources :gossips do
     resources :comments
-    resources :likes
+    resources :likes, only: [:index, :create]
   end
   resources :tags
 
   resources :comments do
     resources :comments
-    resources :likes
+    resources :likes, only: [:index, :create]
   end
 
 

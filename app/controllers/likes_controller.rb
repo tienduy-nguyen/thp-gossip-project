@@ -14,6 +14,10 @@ class LikesController < ApplicationController
     redirect_to(request.env['HTTP_REFERER'])
   end
 
+  # def already_liked?
+    
+  # end
+
   private
   def find_gossip
     @gossip = Gossip.find(params[:gossip_id])

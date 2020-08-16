@@ -55,12 +55,16 @@
   margin-left: 70px;
   display: none;
 }
-
+.btn-like {
+  color: #666;
+  font-weight: 500;
+}
 .btn-reply {
   cursor: pointer;
   padding-top: 0;
   padding-bottom: 0;
-  color: #027bff;
+  color: #666;
+  font-weight: 500;
   outline: none;
   border: none;
   background: transparent;
