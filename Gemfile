@@ -72,5 +72,5 @@ gem 'bootstrap'
 gem 'jquery-rails'
 gem 'will_paginate'
 gem 'bootstrap-will_paginate'
-gem "rename"
+
 
