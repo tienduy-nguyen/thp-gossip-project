@@ -16,7 +16,7 @@ class GossipsController < ApplicationController
   # GET /gossips/:id
   def show
     @gossip = Gossip.find_by(:id => params[:id])
-    @comments = @gossip .comments
+    @gossip_comments = @gossip.comments
   end
 
   # GET /gossips/new

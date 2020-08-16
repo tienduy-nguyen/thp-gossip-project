@@ -70,19 +70,20 @@
       <div class="col-lg-12 card my-4 p-0">
         <h5 class="card-header"><i class="fas fa-comment" style="color: #888;"></i> Leave a comment</h5>
         <div class="card-body">
-          <form>
+          <%= form_for [Comment.new] do |f| %>
             <div class="form-group">
-              <textarea class="form-control" rows="3"></textarea>
+              <%= f.text_area :content, class: "form-control", rows:"3", placeholder: "Add a Reply" %>
+            <%= hidden_field_tag "comment[gossip_id]", @gossip.id %>
             </div>
-            <button type="submit" class="btn btn-primary">Reply</button>
-          </form>
+            <%= f.submit "Reply" ,class: "btn btn-primary" %>
+          <% end %>
         </div>
       </div>
 
 
       <!-- Single Comment -->
-      <% @comments.each do |comment|%>
-         <%= render partial: 'comment', locals: {comment: comment} %>
+      <% @gossip_comments.each do |gossip_comment|%>
+         <%= render partial: 'comment', locals: {gossip_comment: gossip_comment} %>
       <% end %>
 
         

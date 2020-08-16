@@ -1,15 +1,15 @@
 <!-- Single Comment -->
-<div class="media mb-2">
+<div class="media mb-2 col-12">
   <img class="d-flex mr-3 rounded-circle" src="http://placehold.it/50x50" alt="">
   <div class="media-body">
-    <h5 class="mt-0"><%= comment.user.full_name || comment.user.first_name %></h5>
+    <h5 class="mt-0"><%= gossip_comment.user.full_name || gossip_comment.user.first_name %></h5>
     <div class="media-body-comment">
         <div class="media-body-comment-text">
-           <%= comment.content %>
+           <%= gossip_comment.content %>
         </div>
-        <% if comment.likes.count > 0%>
+        <% if gossip_comment.likes.count > 0%>
             <div class="comment-quantity-like" >
-                  <i class="fas fa-thumbs-up"></i> <%= comment.likes.count %>
+                  <i class="fas fa-thumbs-up"></i> <%= gossip_comment.likes.count %>
             </div>
         <% end %>
       
@@ -21,8 +21,8 @@
         <button class="btn-reply">Reply</button>
     </div>
 
-    <div class="comment-childrent">
-      <% @comments.each do |comment_children|%>
+    <div class="comment-children">
+      <% gossip_comment.comments.each do |comment_children|%>
           <%= render partial: 'comment_children', locals: {comment: comment_children} %>
       <% end %>
     </div>
