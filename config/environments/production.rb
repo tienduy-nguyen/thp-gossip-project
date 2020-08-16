@@ -96,6 +96,6 @@ Rails.application.configure do
   # Route exceptions to the application router vs. default
   config.exceptions_app = self.routes
   # Do not dump schema after migrations.
-  # config.active_record.dump_schema_after_migration = false
-  # config.action_mailer.default_url_options = { :host => 'td-gossip2.herokuapp.com' }
+  config.active_record.dump_schema_after_migration = false
+  config.action_mailer.default_url_options = { :host => 'td-gossip2.herokuapp.com' }
 end
