@@ -1,4 +1,7 @@
 # THP Gossip Project
+
+Check demo of project at : [https://td-gossip.herokuapp.com](https://td-gossip.herokuapp.com)
+
 This is my completed gossip project at The Hacking Project
   - Using Bcrypt for password_hash
   - Using Session to store current_user logged
@@ -67,11 +70,12 @@ Social network for sharing and commenting on gossip, created as part of The Hack
 
 
 ## Images projects
-<div style="margin-top: 10px; align-text: center; align-item: center">
+<div style="margin-top: 10px; text-align: center; align-item: center">
 
-  <img src="app/assets/images/home-page.png">
-  <img src="app/assets/images/gossip-page.png">
-  <img src="app/assets/images/gossip-page.png">
-  <img src="app/assets/images/pagination.png">
+  <img src="app/assets/images/demo/home-page.png">
+  <img src="app/assets/images/demo/gossips-page.png">
+  <img src="app/assets/images/demo/gossip-page.png">
+  <img src="app/assets/images/demo/comments.png">
+  <img src="app/assets/images/demo/pagination.png">
 
 </div>
