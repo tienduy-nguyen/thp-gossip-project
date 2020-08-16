@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-  after_create :welcome_send_mail
+  # after_create :welcome_send_mail
 
   has_many :gossips
   belongs_to :city, optional: true

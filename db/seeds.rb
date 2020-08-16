@@ -7,7 +7,7 @@
 # # # GossipTag.destroy_all
 # # # Tag.destroy_all
 
-10.times do |i|
+20.times do |i|
   City.create(
     name: Faker::Address.city,
     zip_code: Faker::Address.zip_code,
@@ -16,13 +16,15 @@ end
 
 puts "Cities created!"
 
-10.times do |i|
+50.times do |i|
   User.create(
     first_name: Faker::Name.first_name,
     last_name: Faker::Name.last_name,
     description: Faker::Lorem.sentence(word_count: 10, supplemental: true, random_words_to_add: 10),
     email: Faker::Internet.email,
     age: rand(18..75),
+    password: "1234567",
+    password_confirmation: "1234567",
     city: City.all.sample,
   )
 end
