@@ -77,5 +77,6 @@ Social network for sharing and commenting on gossip, created as part of The Hack
   <img src="app/assets/images/demo/gossip-page.png">
   <img src="app/assets/images/demo/comments.png">
   <img src="app/assets/images/demo/pagination.png">
+  <img src="app/assets/images/demo/new-gossip.png">
 
 </div>
